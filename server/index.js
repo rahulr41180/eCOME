@@ -11,7 +11,10 @@ const PORT = process.env.PORT || 5000;
 
 const userController = require("./src/routes/user.route");
 
+const categoriesController = require("./src/routes/categories.route");
+
 app.use("/users", userController);
+app.use("/categories", categoriesController);
 
 app.listen(PORT , async () => {
     try {
