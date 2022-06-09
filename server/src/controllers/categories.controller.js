@@ -50,8 +50,8 @@ const createCate = async (req,res,next) => {
         if(!id3) {
             console.log('req.body.id1:', req.body.id2);
             const id3 = await Categories1.create( {
+
                 _id : req.body.id3,
-                
                 ancestors : [req.body.id1,req.body.id2],
                 parent : req.body.id2,
             });

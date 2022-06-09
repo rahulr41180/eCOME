@@ -15,6 +15,7 @@ export const Navbar = () => {
         <Container>
             <div className="left__box">
                 <Link className="home" to="/">eCOME</Link>
+                <Link className="home" to="/categories/edit">Categories</Link>
             </div>
             <div className="right__box">
                 {store.loginUser.loginUser.length === 0 ?

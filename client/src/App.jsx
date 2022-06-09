@@ -6,6 +6,7 @@ import { Home } from './pages/Home';
 import { SignUp } from "./pages/SignUp";
 import { Login } from "./pages/Login";
 import { UserDetails } from "./pages/UserDetails";
+import { Categories } from "./Tasks/Categories";
 import { LogOut } from "./Tasks/LogOut";
 import { ProfileUpdate } from "./Tasks/ProfileUpdate";
 import { Routes, Route } from "react-router-dom";
@@ -59,6 +60,12 @@ function App() {
         <>
           <Navbar />
           <ProfileUpdate />
+        </>
+      }></Route>
+      <Route path={`/categories/edit`} element={
+        <>
+          <Navbar />
+          <Categories />
         </>
       }></Route>
     </Routes>
