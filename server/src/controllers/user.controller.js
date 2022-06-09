@@ -122,10 +122,47 @@ const userLogOut = async (req,res) => {
     }
 }
 
+const updateProfile = async (req,res,next) => {
+    try {
+        const { id } = req.params;
+        console.log("idinBackendSide : ",id);
+        console.log("req :", req.body.formData);
+        const data = req.body.formData;
+        const userFind = await User1.findOne({_id : id}).lean().exec();
+        console.log("userFind :", userFind);
+
+        const obj = { 
+            address : data.address,
+        }
+        const updateUser = await User1.findByIdAndUpdate(id, {
+            firstName : data.firstName, 
+            lastName : data.lastName, 
+            email : data.email, 
+            mobileNumber : data.mobileNumber,
+            $push : {address : {$each : [obj]}},
+        }, { new : true });
+        console.log("updateUser :", updateUser);
+
+        const deleteLogin = await Login1.remove({});
+
+        const loginUser = await Login1.create({userId : id});
+        console.log('loginUser:', loginUser)
+
+        return res.status(201).json({
+            message : "Your Profile Update Successfully Thank You"
+        })
+
+    }
+    catch(error) {
+        console.log("error : ", error);
+    }
+}
+
 module.exports = {
     getAllUsers,
     postNewUser,
     loginUser,
     getLoginUser,
-    userLogOut
+    userLogOut,
+    updateProfile
 }

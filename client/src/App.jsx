@@ -7,6 +7,7 @@ import { SignUp } from "./pages/SignUp";
 import { Login } from "./pages/Login";
 import { UserDetails } from "./pages/UserDetails";
 import { LogOut } from "./Tasks/LogOut";
+import { ProfileUpdate } from "./Tasks/ProfileUpdate";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -52,6 +53,12 @@ function App() {
       <Route path="/users/logout/:id" element={
         <>
           <LogOut />
+        </>
+      }></Route>
+      <Route path={`/users/:id/edit`} element={
+        <>
+          <Navbar />
+          <ProfileUpdate />
         </>
       }></Route>
     </Routes>

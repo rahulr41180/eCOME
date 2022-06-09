@@ -22,12 +22,7 @@ const UserSchema = new mongoose.Schema({
     password : {
         type : String,
     },
-    address : [
-
-        {
-            type : String,
-        }
-    ]
+    address : []
 }, {
     timestamps : true,
     versionKey : false,

@@ -9,7 +9,7 @@ export const UserDetails = () => {
     const store = useSelector((store) => store);
     console.log('storeinUserDetails:', store.loginUser.loginUser)
     const userDetails = store.loginUser.loginUser;
-    console.log('userDetails:', userDetails)
+    console.log('userDetailsinfrontend:', userDetails)
 
     return (
         <Box>
@@ -25,7 +25,7 @@ export const UserDetails = () => {
                     <>
                         {userDetails[0].address.map((element,index) => {
                             return (
-                                <p className="address"><b>Address {index + 1}</b> : {element}</p>
+                                <p key={index+1} className="address"><b>Address {index + 1}</b> : {element.address}</p>
                             )
                         })}
                     </>
@@ -63,7 +63,7 @@ const Box = styled.div`
 
         .address {
             /* border : 1px solid; */
-            margin : 0 0 2vw 0;
+            margin : 0 0 1vw 0;
         }
         .edit__profile {
             border : 1px solid gray;
