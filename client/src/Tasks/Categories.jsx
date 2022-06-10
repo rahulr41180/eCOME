@@ -61,8 +61,8 @@ export const Categories = () => {
                         }} name="id2" id="" className="id1__select">
 
                             <option value="">Section Select</option>
-                            <option value="Cricket">Cricket</option>
-                            <option value="Chezz">Chezz</option>
+                            <option value="Bat">Bat</option>
+                            <option value="Football">Football</option>
                         </select>
                     </>
                     :
@@ -74,8 +74,8 @@ export const Categories = () => {
                         }} name="id2" id="" className="id1__select">
 
                             <option value="">Section Select</option>
-                            <option value="Men's_Clothes">Men's Clothes</option>
-                            <option value="Women's_Clothes">Women's Clothes</option>
+                            <option value="Mens_Clothes">Men's Clothes</option>
+                            <option value="Womens_Clothes">Women's Clothes</option>
                         </select>
                     </>
                     :
@@ -165,8 +165,60 @@ export const Categories = () => {
                         </select>
                     </>
                     :
+                    id2 === "Bat" ? 
+                    <>
+                        <label className="id1__label" htmlFor="">Bat Section</label>
+                        <select value={id3} onChange={(event) => {
+                            setId3(event.target.value);
+                        }} name="id3" id="" className="id1__select">
+
+                            <option value="">Section Select</option>
+                            <option value="SS">SS</option>
+                            <option value="BAS">BAS</option>
+                        </select>
+                    </>
+                    :
+                    id2 === "Football" ? 
+                    <>
+                        <label className="id1__label" htmlFor="">Football Section</label>
+                        <select value={id3} onChange={(event) => {
+                            setId3(event.target.value);
+                        }} name="id3" id="" className="id1__select">
+
+                            <option value="">Section Select</option>
+                            <option value="Nivia_Storm_Football">Nivia Storm Football</option>
+                            <option value="Vector_X_Street_Soccer_Football">Vector X Street Soccer Football</option>
+                        </select>
+                    </>
+                    :
+                    id2 === "Mens_Clothes" ? 
+                    <>
+                        <label className="id1__label" htmlFor="">Mens Clothes Section</label>
+                        <select value={id3} onChange={(event) => {
+                            setId3(event.target.value);
+                        }} name="id3" id="" className="id1__select">
+                            <option value="">Section Select</option>
+                            <option value="Roadster">Roadster</option>
+                            <option value="Levis">Levi's</option>
+                        </select>
+                    </>
+                    :
+                    id2 === "Womens_Clothes" ? 
+                    <>
+                        <label className="id1__label" htmlFor="">Womens ClothesSection</label>
+                        <select value={id3} onChange={(event) => {
+                            setId3(event.target.value);
+                        }} name="id3" id="" className="id1__select">
+                            <option value="">Section Select</option>
+                            <option value="Ethnic_basket">Ethnic basket</option>
+                            <option value="Ramonds">Ramond's</option>
+                        </select>
+                    </>
+                    :
                     ""
                 }
+
+                <button type="submit">Add Category</button>
             </form>
         </Box>
     )
@@ -205,6 +257,18 @@ const Box = styled.div`
 
             font-size: 1.2vw;
 
+        }
+        button {
+            border : 1px solid silver;
+
+            width : fit-content;
+            padding : .2vw .8vw;
+            font-size: 1.4vw;
+            margin : auto;
+            border-radius: .25vw;
+            cursor: pointer;
+            background-color: #8888da;
+            color : white;
         }
     }
 `
