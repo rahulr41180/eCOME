@@ -15,7 +15,6 @@ export const Navbar = () => {
         <Container>
             <div className="left__box">
                 <Link className="home" to="/">eCOME</Link>
-                <Link className="home" to="/categories/edit">Categories</Link>
             </div>
             <div className="right__box">
                 {store.loginUser.loginUser.length === 0 ?
@@ -23,10 +22,10 @@ export const Navbar = () => {
                         <Link className="signUp" to="/users/login">Login</Link>
                         <Link className="signUp" to="/users/create">SignUP</Link>
                     </> 
-
                     :
-
                     <>
+                        <Link className="signUp" to="/categories/create">Categories</Link>
+                        <Link className="signUp" to="/product/create">Product</Link>
                         <Link className="signUp" to={`/users/${loginUserData[0].firstName+"_"+loginUserData[0].lastName}`}>{loginUserData[0].firstName+"_"+loginUserData[0].lastName}</Link>
                         <Link className="signUp" to={`/users/logout/${loginUserData[0]._id}`}>LogOut</Link>
                     </>

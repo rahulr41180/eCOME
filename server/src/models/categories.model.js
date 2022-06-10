@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 
-const CategoriesSchema = mongoose.Schema({
+const CategoriesSchema = new mongoose.Schema({
     _id : {
         type : String,
     },

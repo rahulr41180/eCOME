@@ -8,6 +8,7 @@ import { Login } from "./pages/Login";
 import { UserDetails } from "./pages/UserDetails";
 import { Categories } from "./Tasks/Categories";
 import { LogOut } from "./Tasks/LogOut";
+import { ProductCreated } from "./Tasks/ProductCreated";
 import { ProfileUpdate } from "./Tasks/ProfileUpdate";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -62,10 +63,16 @@ function App() {
           <ProfileUpdate />
         </>
       }></Route>
-      <Route path={`/categories/edit`} element={
+      <Route path={`/categories/create`} element={
         <>
           <Navbar />
           <Categories />
+        </>
+      }></Route>
+      <Route path={`/Product/create`} element={
+        <>
+          <Navbar />
+          <ProductCreated />
         </>
       }></Route>
     </Routes>
