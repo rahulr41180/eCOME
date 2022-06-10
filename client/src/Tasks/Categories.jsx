@@ -2,6 +2,9 @@
 import styled from "styled-components";
 
 import { useState, useEffect } from "react";
+import { createCategories } from "../utils/ApiRoutes";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Categories = () => {
 
@@ -10,11 +13,32 @@ export const Categories = () => {
     const [ id3, setId3 ] = useState("Samsung");
     console.log('id2:', id2)
     console.log('id1:', id1)
+    const navigate = useNavigate();
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = await axios.post(createCategories, {
+            id1 : id1,
+            id2 : id2,
+            id3 : id3
+        })
+
+        .then((res) => {
+            console.log('res:', res)
+            alert(res.data.message);
+            navigate("/");
+        })
+        .catch((error) => {
+            console.log('error:', error)
+
+            alert("There might be some problem")
+        })
+    }
 
     return (
         <Box>
             <p>CATEGORY CREATE</p>
-            <form action="">
+            <form onSubmit={handleSubmit} action="">
                 <label className="id1__label" htmlFor="">Category Select</label>
                 <select value={id1} onChange={(event) => {
                     setId1(event.target.value);

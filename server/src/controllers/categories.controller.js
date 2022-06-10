@@ -62,7 +62,7 @@ const createCate = async (req,res,next) => {
         }
 
         return res.status(201).json({
-            message : "Hello"
+            message : "Your Categories has create successfully Thank You"
         });
     }
     catch(error) {

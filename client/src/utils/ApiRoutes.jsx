@@ -6,3 +6,4 @@ export const loginUser = `${host}/users/login`;
 export const getLoginUser = `${host}/users/user`;
 export const logoutUser = `${host}/users/logout`;
 export const updateProfile = `${host}/users/edit`;
+export const createCategories = `${host}/categories/create`;
