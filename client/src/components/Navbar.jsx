@@ -39,8 +39,12 @@ export const Navbar = () => {
 const Container = styled.div`
     border: 1px solid;
     padding: 1vw;
+
+
+
+
     margin: auto;
-    width: 99.98vw;
+    width: 98.79vw;
     display : flex;
     justify-content: space-between;
     .left__box {

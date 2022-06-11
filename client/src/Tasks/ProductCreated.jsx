@@ -2,9 +2,12 @@
 import styled from "styled-components";
 
 import { useState, useEffect } from "react";
-import { createCategories } from "../utils/ApiRoutes";
+import { createCategories, createProduct } from "../utils/ApiRoutes";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify"; 
 import { Link, useNavigate } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const ProductCreated = () => {
 
@@ -13,25 +16,56 @@ export const ProductCreated = () => {
     const [ id3, setId3 ] = useState("Samsung");
     console.log('id2:', id2)
     console.log('id1:', id1)
+    const [formData, setFormData] = useState({
+        productName : "",
+        productPrice : "",
+        productImage : "",
+        productDescription : "",
+    });
     const navigate = useNavigate();
+
+    
+    const ErrorStyled = {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    }
+
+    const handleChange = (event) => {
+        const { name, value} = event.target;
+        setFormData({
+            ...formData,
+            [ name ] : value
+        })
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = await axios.post(createCategories, {
+        const data = await axios.post(createProduct, {
             id1 : id1,
             id2 : id2,
-            id3 : id3
+            id3 : id3,
+            productName : formData.productName,
+            productPrice : formData.productPrice,
+            productImage : formData.productImage,
+            productDescription : formData.productDescription,
         })
 
         .then((res) => {
             console.log('res:', res)
             alert(res.data.message);
-            navigate("/");
+            // navigate("/");
         })
+
         .catch((error) => {
             console.log('error:', error)
-
-            alert("There might be some problem")
+            toast.error(error.response.data.message, ErrorStyled);
+            // alert(error.response.data.message);
+            // alert("There might be some problem")
         })
     }
 
@@ -241,9 +275,18 @@ export const ProductCreated = () => {
                     :
                     ""
                 }
-
+                
+                <label className="id1__label" htmlFor="">Product Name</label>
+                <input onChange={handleChange} type="text" name="productName" placeholder="Product Name" value={formData.productName} />
+                <label className="id1__label" htmlFor="">Product Price</label>
+                <input onChange={handleChange} type="number" name="productPrice" placeholder="Product Price" value={formData.productPrice} />
+                <label className="id1__label" htmlFor="">Product Image</label>
+                <input onChange={handleChange} type="text" name="productImage" placeholder="Product Image" value={formData.productImage} />
+                <label htmlFor="" className="id1__label">Product Description</label>
+                <input onChange={handleChange} type="text" name="productDescription" placeholder="productDescription" id={formData.productDescription} />
                 <button type="submit">Add Product</button>
             </form>
+            <ToastContainer></ToastContainer>
         </Box>
     )
 
@@ -281,6 +324,13 @@ const Box = styled.div`
 
             font-size: 1.2vw;
 
+        }
+        input {
+            width: 99.8%;
+            padding : .4vw 1vw;
+            font-size: 1.2vw;
+            border : 1px solid;
+            border-radius: .25vw;
         }
         button {
             border : 1px solid silver;

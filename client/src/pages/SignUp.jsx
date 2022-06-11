@@ -104,6 +104,7 @@ const Container = styled.div`
             /* border : 1px solid; */
             font-size: 1vw;
         }
+        
         input {
             width: 99.8%;
             padding : .4vw 1vw;
