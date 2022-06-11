@@ -54,16 +54,16 @@ export const ProductCreated = () => {
             productImage : formData.productImage,
             productDescription : formData.productDescription,
         })
-
         .then((res) => {
             console.log('res:', res)
             alert(res.data.message);
-            // navigate("/");
+            navigate("/");
         })
 
         .catch((error) => {
             console.log('error:', error)
             toast.error(error.response.data.message, ErrorStyled);
+            // navigate("/categories/create")
             // alert(error.response.data.message);
             // alert("There might be some problem")
         })

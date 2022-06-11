@@ -7,7 +7,7 @@ const { getAllProduct, createNewProduct } = require("../controllers/product.cont
 
 const { uploadFiles } = require("../middlewares/uploadImage");
 
-router.get("", getAllProduct);
+router.get("/get", getAllProduct);
 router.post("/create", createNewProduct);
 
 
