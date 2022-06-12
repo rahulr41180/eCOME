@@ -12,19 +12,24 @@ export const BrandCreate = () => {
     console.log('id:', id)
 
     const [brandData, setBrandData] = useState([]);
+    const [cateIdData, setCateIdData] = useState({});
+    console.log('cateIdData:', cateIdData)
+    // console.log('cateIdData:', cateIdData.ancestors[0])
     console.log('brandData:', brandData)
 
     useEffect(() => {
-
         getProduct();
     },[]);
     
     const getProduct = async () => {
         try {
+
             const Product = await axios.get(`${getOneProductInBrand}/${id}`);
+
             console.log('Product:', Product)
 
             setBrandData([Product.data.productOne]);
+            setCateIdData(Product.data.productOne.cateId);
 
         }
         catch(error) {
@@ -32,9 +37,39 @@ export const BrandCreate = () => {
         }
     }
 
+    const handleChange = (event) => {
+
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    }
+
+
     return (
         <Box>
-            <div className="brand__add__box"></div>
+            <div className="brand__add__box">
+                <p>BRAND CREATE</p>
+                <form onSubmit={handleSubmit} action="">
+
+                    <label htmlFor="" className="id1__label">Category</label>
+                    <select value={cateIdData.ancestors == undefined ? "" : cateIdData.ancestors[0]} onChange={handleChange} name="" id="" className="id1__select">
+                        <option value="">Category</option>
+                        <option value={cateIdData.ancestors == undefined ? "" : cateIdData.ancestors[0]}>{cateIdData.ancestors == undefined ? "" : cateIdData.ancestors[0]}</option>
+                    </select>
+                    <label htmlFor="" className="id1__label">Category Section</label>
+                    <select value={cateIdData.ancestors == undefined ? "" : cateIdData.ancestors[0]} onChange={handleChange} name="" id="" className="id1__select">
+                        <option value="">Category Section</option>
+                        <option value={cateIdData.ancestors == undefined ? "" : cateIdData.ancestors[0]}>{cateIdData.ancestors == undefined ? "" : cateIdData.ancestors[1]}</option>
+                    </select>
+                    <label htmlFor="" className="id1__label">Select Brand</label>
+                    <select value={cateIdData._id == undefined ? "" : cateIdData._id} onChange={handleChange} name="" id="" className="id1__select">
+                        <option value="">Category Section</option>
+                        <option value={cateIdData._id == undefined ? "" : cateIdData._id}>{cateIdData._id == undefined ? "" : cateIdData._id}</option>
+                    </select>
+                    <button>Create Brand</button>
+                </form>
+            </div>
             <div className="product__show__box"></div>
         </Box>
     )
@@ -43,10 +78,61 @@ export const BrandCreate = () => {
 
 const Box = styled.div`
     border : 1px solid;
-    width : 95vw;
+    width : 45vw;
     padding : 1vw;
     margin : 1vw auto auto auto;
     border-radius: .25vw;
+    display: flex;
+    justify-content: space-between;
+    gap: .4vw;
 
+    .brand__add__box {
+        border : 1px solid;
+        width: 38%;
+        border-radius: .25vw;
+        padding : .5vw;
+        p {
+        /* border : 1px solid; */
+        width : fit-content;
+        margin : auto;
+        font-size: 1.2vw;
+        padding : .2vw .4vw;
+        }
+        form {
+            border : 1px solid;
+            width : 99%;
+            padding : .5vw;
+            display : flex;
+            flex-direction: column;
+            gap: .5vw;
+            .id1__label {
+                border : 1px solid;
+                font-size: 1vw;
+            }
+            .id1__select {
+                border : 1px solid;
+                width: 99.88%;
+                padding : .2vw .6vw;
+                border-radius: .4vw;
+                font-size: 1.2vw;
+            }
+
+            button {
+                border : 1px solid silver;
+                width : fit-content;
+                padding : .2vw .8vw;
+                font-size: 1.4vw;
+                margin : auto;
+                border-radius: .25vw;
+                cursor: pointer;
+                background-color: #8888da;
+                color : white;
+            }
+        }
+    }
+    .product__show__box {
+        border : 1px solid;
+        width : 60%;
+    }
 
 `
