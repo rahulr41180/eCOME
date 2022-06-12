@@ -26,6 +26,7 @@ export const Navbar = () => {
                     <>
                         <Link className="signUp" to="/categories/create">Categories</Link>
                         <Link className="signUp" to="/product/create">Product</Link>
+                        <Link className="signUp" to="/brand/create">Brand</Link>
                         <Link className="signUp" to={`/users/${loginUserData[0].firstName+"_"+loginUserData[0].lastName}`}>{loginUserData[0].firstName+"_"+loginUserData[0].lastName}</Link>
                         <Link className="signUp" to={`/users/logout/${loginUserData[0]._id}`}>LogOut</Link>
                     </>
@@ -41,10 +42,8 @@ const Container = styled.div`
     padding: 1vw;
 
 
-
-
     margin: auto;
-    width: 98.79vw;
+    width: 100vw;
     display : flex;
     justify-content: space-between;
     .left__box {

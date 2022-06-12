@@ -1,6 +1,8 @@
 
 const mongoose = require("mongoose");
 
+// format: (value) => value.toLocaleString('en-US')
+
 const ProductSchema = new mongoose.Schema({
     cateId : {
         type : mongoose.Schema.Types.String,
@@ -10,7 +12,6 @@ const ProductSchema = new mongoose.Schema({
         type : String,
     },
     productPrice : {
-        
         type : Number,
     },
     productDescription : {

@@ -7,6 +7,7 @@ import { SignUp } from "./pages/SignUp";
 import { Login } from "./pages/Login";
 import { UserDetails } from "./pages/UserDetails";
 import { Categories } from "./Tasks/Categories";
+import { BrandCreate } from "./Tasks/BrandCreate";
 import { LogOut } from "./Tasks/LogOut";
 import { ProductCreated } from "./Tasks/ProductCreated";
 import { ProfileUpdate } from "./Tasks/ProfileUpdate";
@@ -69,10 +70,18 @@ function App() {
           <Categories />
         </>
       }></Route>
-      <Route path={`/Product/create`} element={
+
+      <Route path={`/product/create`} element={
         <>
           <Navbar />
           <ProductCreated />
+        </>
+      }></Route>
+      <Route path={`/brand/create`} element={
+        <>
+          <Navbar />
+
+          <BrandCreate />
         </>
       }></Route>
     </Routes>
