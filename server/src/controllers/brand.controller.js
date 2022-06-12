@@ -31,10 +31,19 @@ const getProductById = async (req,res,next) => {
 
 const createBrand = async (req,res,next) => {
     try {
-        const Brand = await Brand1.create({})
+        const { id } = req.params;
+        console.log('id:', id)
+        console.log("req.body :", req.body);
+        // const Brand = await Brand1.create({})
+
+        return res.status(201).json({
+            "Hello" : "Hello"
+        })
     }
     catch(error) {
-
+        return res.status(500).json({
+            error : error.message
+        })
     }
 }
 

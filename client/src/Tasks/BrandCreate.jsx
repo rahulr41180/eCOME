@@ -13,6 +13,8 @@ export const BrandCreate = () => {
 
     const [brandData, setBrandData] = useState([]);
     const [cateIdData, setCateIdData] = useState({});
+    const [brandName, setBrandName] = useState([]);
+    console.log('brandName:', brandName)
     console.log('cateIdData:', cateIdData)
     // console.log('cateIdData:', cateIdData.ancestors[0])
     console.log('brandData:', brandData)
@@ -44,7 +46,16 @@ export const BrandCreate = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            
+            const Brand = await axios.post(`${brandCreate}/${brandData.length === 0 ? "" : brandData[0]._id}`, {
+                id : cateIdData === undefined ? "" : cateIdData._id
+            }).
+            then((res) => {
+                
+                console.log("res :", res);
+            })
+            .catch((error) => {
+                console.log("error :", error);
+            })
         }
         catch(error) {
 
