@@ -75,7 +75,7 @@ export const ProductCreated = () => {
             alert(res.data.message);
             // navigate("/");
             getAllProduct();
-            
+
         })
 
         .catch((error) => {
@@ -102,7 +102,7 @@ export const ProductCreated = () => {
                                 <p className="price"><b>PRICE</b> : {new Intl.NumberFormat("en-IN", { maximunSignificantDigits : 3 }).format(Number(element.productPrice))}</p>
                             </div>
 
-                            <Link className="brandAdd" to="/brand/create">BRAND ADD</Link>
+                            <Link className="brandAdd" to={`/brand/create/${element._id}`}>BRAND ADD</Link>
                         </div>  
                     )
                 })}
@@ -201,7 +201,7 @@ export const ProductCreated = () => {
                             }} name="id3" id="" className="id1__select">
 
                                 <option value="">Section Select</option>
-                                <option value="Samsung">Samsung</option>
+                                <option value="Voltas">Voltas</option>
                                 <option value="Hitachi">Hitachi</option>
                             </select>
                         </>
@@ -214,7 +214,7 @@ export const ProductCreated = () => {
                             }} name="id3" id="" className="id1__select">
 
                                 <option value="">Section Select</option>
-                                <option value="Samsung">Samsung</option>
+                                <option value="LG">LG</option>
                                 <option value="Wirphool">Wirphool</option>
                             </select>
                         </>
@@ -355,8 +355,8 @@ const Box = styled.div`
             .product__item__image {
                 border : 1px solid;
                 border-radius: .2vw .2vw 0 0;
-                width: 84.88%;
-                height : 20vw;
+                width: 86.88%;
+                height : 14vw;
                 margin : auto auto auto auto;
             }
             .product__item__content {

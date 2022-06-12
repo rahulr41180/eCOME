@@ -77,7 +77,7 @@ function App() {
           <ProductCreated />
         </>
       }></Route>
-      <Route path={`/brand/create`} element={
+      <Route path={`/brand/create/:id`} element={
         <>
           <Navbar />
 

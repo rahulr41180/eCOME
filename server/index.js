@@ -13,10 +13,12 @@ const userController = require("./src/routes/user.route");
 
 const categoriesController = require("./src/routes/categories.route");
 const productController = require("./src/routes/product.route");
+const brandController = require("./src/routes/brand.route");
 
 app.use("/users", userController);
 app.use("/categories", categoriesController);
 app.use("/product", productController);
+app.use("/brand", brandController);
 
 app.listen(PORT , async () => {
     try {

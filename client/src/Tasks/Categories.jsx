@@ -130,7 +130,7 @@ export const Categories = () => {
                         }} name="id3" id="" className="id1__select">
 
                             <option value="">Section Select</option>
-                            <option value="Samsung">Samsung</option>
+                            <option value="Voltas">Voltas</option>
                             <option value="Hitachi">Hitachi</option>
                         </select>
                     </>
@@ -143,7 +143,7 @@ export const Categories = () => {
                         }} name="id3" id="" className="id1__select">
 
                             <option value="">Section Select</option>
-                            <option value="Samsung">Samsung</option>
+                            <option value="LG">LG</option>
                             <option value="Wirphool">Wirphool</option>
                         </select>
                     </>

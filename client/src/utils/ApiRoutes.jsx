@@ -9,3 +9,6 @@ export const updateProfile = `${host}/users/edit`;
 export const createCategories = `${host}/categories/create`;
 export const createProduct = `${host}/product/create`;
 export const getProduct = `${host}/product/get`;
+export const brandCreate = `${host}/brand/create`;
+
+export const getOneProductInBrand = `${host}/brand/get`;
