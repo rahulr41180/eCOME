@@ -20,7 +20,9 @@ export const BrandCreate = () => {
     console.log('brandData:', brandData)
 
     useEffect(() => {
+
         getProduct();
+
     },[]);
     
     const getProduct = async () => {
@@ -51,10 +53,13 @@ export const BrandCreate = () => {
             }).
             then((res) => {
                 
-                console.log("res :", res);
+                console.log("res :", res.data.brand);
+                alert("Your brand has added successfully");
+                setBrandName([res.data.brand]);
             })
             .catch((error) => {
                 console.log("error :", error);
+                alert(error.response.data.message);
             })
         }
         catch(error) {
@@ -93,7 +98,7 @@ export const BrandCreate = () => {
                 <div className="product__content">
                     <p className="name"><b>Name</b> : {brandData.length === 0 ? "" : brandData[0].productName}</p>
                     <p className="price"><b>Price</b> : {brandData.length === 0 ? "" : brandData[0].productPrice}</p>
-                    <p className="brand"></p>
+                    <p className="brand"><b>Brand</b> : {brandName.length === 0 ? "" : brandName[0].brand}</p>
                 </div>
             </div>
         </Box>

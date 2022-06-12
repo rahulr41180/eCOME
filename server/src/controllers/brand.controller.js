@@ -34,10 +34,25 @@ const createBrand = async (req,res,next) => {
         const { id } = req.params;
         console.log('id:', id)
         console.log("req.body :", req.body);
-        // const Brand = await Brand1.create({})
+
+        const product = await Product1.findOne({_id : id}).populate("cateId").lean().exec();
+        console.log('product:', product)
+
+        const brandOne = await Brand1.findOne({productId : id}).lean().exec();
+        if(brandOne) {
+
+            return res.status(500).json({
+                message : "Brand already created for this product Thank You"
+            })
+
+        }
+
+        const Brand = await Brand1.create({productId : id, brand : product.cateId._id});
+        console.log('Brand:', Brand)
+
 
         return res.status(201).json({
-            "Hello" : "Hello"
+            brand : Brand,
         })
     }
     catch(error) {
@@ -48,7 +63,6 @@ const createBrand = async (req,res,next) => {
 }
 
 module.exports = {
-
     getProductById,
     createBrand
 }
