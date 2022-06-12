@@ -2,6 +2,7 @@
 const Product1 = require('../models/product.model');
 
 const Categories1 = require("../models/categories.model");
+const Brand1 = require("../models/brand.model");
 
 const getProductById = async (req,res,next) => {
     try {
@@ -28,7 +29,17 @@ const getProductById = async (req,res,next) => {
     }
 }
 
-module.exports = {
-    getProductById,
+const createBrand = async (req,res,next) => {
+    try {
+        const Brand = await Brand1.create({})
+    }
+    catch(error) {
 
+    }
+}
+
+module.exports = {
+
+    getProductById,
+    createBrand
 }

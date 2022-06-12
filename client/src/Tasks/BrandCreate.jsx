@@ -41,8 +41,15 @@ export const BrandCreate = () => {
 
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        try {
+            
+        }
+        catch(error) {
+
+        }
+
     }
 
 
@@ -53,24 +60,31 @@ export const BrandCreate = () => {
                 <form onSubmit={handleSubmit} action="">
 
                     <label htmlFor="" className="id1__label">Category</label>
-                    <select value={cateIdData.ancestors == undefined ? "" : cateIdData.ancestors[0]} onChange={handleChange} name="" id="" className="id1__select">
+                    <select value={cateIdData.ancestors === undefined ? "" : cateIdData.ancestors[0]} onChange={handleChange} name="" id="" className="id1__select">
                         <option value="">Category</option>
-                        <option value={cateIdData.ancestors == undefined ? "" : cateIdData.ancestors[0]}>{cateIdData.ancestors == undefined ? "" : cateIdData.ancestors[0]}</option>
+                        <option value={cateIdData.ancestors === undefined ? "" : cateIdData.ancestors[0]}>{cateIdData.ancestors === undefined ? "" : cateIdData.ancestors[0]}</option>
                     </select>
                     <label htmlFor="" className="id1__label">Category Section</label>
-                    <select value={cateIdData.ancestors == undefined ? "" : cateIdData.ancestors[0]} onChange={handleChange} name="" id="" className="id1__select">
+                    <select value={cateIdData.ancestors === undefined ? "" : cateIdData.ancestors[0]} onChange={handleChange} name="" id="" className="id1__select">
                         <option value="">Category Section</option>
-                        <option value={cateIdData.ancestors == undefined ? "" : cateIdData.ancestors[0]}>{cateIdData.ancestors == undefined ? "" : cateIdData.ancestors[1]}</option>
+                        <option value={cateIdData.ancestors === undefined ? "" : cateIdData.ancestors[0]}>{cateIdData.ancestors === undefined ? "" : cateIdData.ancestors[1]}</option>
                     </select>
                     <label htmlFor="" className="id1__label">Select Brand</label>
-                    <select value={cateIdData._id == undefined ? "" : cateIdData._id} onChange={handleChange} name="" id="" className="id1__select">
+                    <select value={cateIdData._id === undefined ? "" : cateIdData._id} onChange={handleChange} name="" id="" className="id1__select">
                         <option value="">Category Section</option>
-                        <option value={cateIdData._id == undefined ? "" : cateIdData._id}>{cateIdData._id == undefined ? "" : cateIdData._id}</option>
+                        <option value={cateIdData._id === undefined ? "" : cateIdData._id}>{cateIdData._id === undefined ? "" : cateIdData._id}</option>
                     </select>
                     <button>Create Brand</button>
                 </form>
             </div>
-            <div className="product__show__box"></div>
+            <div className="product__show__box">
+                <img src={brandData.length === 0 ? "" : brandData[0].productImage[0].productImage} alt="" />
+                <div className="product__content">
+                    <p className="name"><b>Name</b> : {brandData.length === 0 ? "" : brandData[0].productName}</p>
+                    <p className="price"><b>Price</b> : {brandData.length === 0 ? "" : brandData[0].productPrice}</p>
+                    <p className="brand"></p>
+                </div>
+            </div>
         </Box>
     )
 
@@ -133,6 +147,25 @@ const Box = styled.div`
     .product__show__box {
         border : 1px solid;
         width : 60%;
+        height : 15vw;
+        display : flex;
+
+        img {
+            border : 1px solid;
+            width : 40%;
+            height : 14.8vw;
+        }
+        .product__content {
+            border : 1px solid;
+            width : 59.9%;
+            height : 14.8vw;
+
+            padding : .5vw;
+            .name {
+                border : 1px solid;
+                font-size: 1vw;
+            }
+        }
     }
 
 `

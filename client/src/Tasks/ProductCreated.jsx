@@ -98,8 +98,8 @@ export const ProductCreated = () => {
                         <div className="product__item">
                             <img className="product__item__image" src={element.productImage[0].productImage} alt="" />
                             <div className="product__item__content">
-                                <p className="name">{element.productName}</p>
-                                <p className="price"><b>PRICE</b> : {new Intl.NumberFormat("en-IN", { maximunSignificantDigits : 3 }).format(Number(element.productPrice))}</p>
+                                <p className="name"><b>Name</b> : {element.productName}</p>
+                                <p className="price"><b>Price</b> : {new Intl.NumberFormat("en-IN", { maximunSignificantDigits : 3 }).format(Number(element.productPrice))}</p>
                             </div>
 
                             <Link className="brandAdd" to={`/brand/create/${element._id}`}>BRAND ADD</Link>

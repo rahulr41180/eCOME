@@ -3,8 +3,9 @@ const express = require("express");
 
 const router = express.Router();
 
-const { getProductById } = require("../controllers/brand.controller");
+const { getProductById, createBrand } = require("../controllers/brand.controller");
 
 router.get("/get/:id", getProductById);
+router.post("/create/:id", createBrand);
 
 module.exports = router;
