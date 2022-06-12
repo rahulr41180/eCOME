@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 import { useState, useEffect } from "react";
-import { createCategories, createProduct } from "../utils/ApiRoutes";
+import { createCategories, createProduct, getProduct } from "../utils/ApiRoutes";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify"; 
 import { Link, useNavigate } from "react-router-dom";
@@ -14,6 +14,8 @@ export const ProductCreated = () => {
     const [ id1, setId1 ] = useState("Electronic");
     const [ id2, setId2 ] = useState("Cell_Phone");
     const [ id3, setId3 ] = useState("Samsung");
+    const [productData, setProductData] = useState([]);
+    console.log('productData:', productData)
     console.log('id2:', id2)
     console.log('id1:', id1)
     const [formData, setFormData] = useState({
@@ -24,6 +26,20 @@ export const ProductCreated = () => {
     });
     const navigate = useNavigate();
 
+    useEffect(() => {
+        getAllProduct();
+    },[])
+    const getAllProduct = async () => {
+        try {
+
+            const data = await axios.get(getProduct);
+            console.log('data:', data.data.products);
+            setProductData(data.data.products);
+        }
+        catch(error) {
+            console.log("error :", error);
+        }
+    }
     
     const ErrorStyled = {
         position: "top-right",
@@ -57,7 +73,9 @@ export const ProductCreated = () => {
         .then((res) => {
             console.log('res:', res)
             alert(res.data.message);
-            navigate("/");
+            // navigate("/");
+            getAllProduct();
+            
         })
 
         .catch((error) => {
@@ -73,16 +91,21 @@ export const ProductCreated = () => {
 
         <Box>
             <div className="product__item__box">
-                <div className="product__item">
-                    <img className="product__item__image" src="" alt="" />
-                    <div className="product__item__content">
-                        <p className="name">Lorem, ipsum.</p>
-                        <p className="price"><b>PRICE</b> : {new Intl.NumberFormat("en-IN", { maximunSignificantDigits : 3 }).format(Number(12345))}</p>
-                        <p className="description">Lorem ipsum dolor sit.</p>
-                    </div>
 
-                    <Link className="brandAdd" to="/brand/create">BRAND ADD</Link>
-                </div>
+
+                {productData.map((element) => {
+                    return (
+                        <div className="product__item">
+                            <img className="product__item__image" src={element.productImage[0].productImage} alt="" />
+                            <div className="product__item__content">
+                                <p className="name">{element.productName}</p>
+                                <p className="price"><b>PRICE</b> : {new Intl.NumberFormat("en-IN", { maximunSignificantDigits : 3 }).format(Number(element.productPrice))}</p>
+                            </div>
+
+                            <Link className="brandAdd" to="/brand/create">BRAND ADD</Link>
+                        </div>  
+                    )
+                })}
             </div>
             <div className="product__create__box">
                 <p>PRODUCT CREATE</p>
@@ -332,8 +355,9 @@ const Box = styled.div`
             .product__item__image {
                 border : 1px solid;
                 border-radius: .2vw .2vw 0 0;
-                width: 99.88%;
-                height : 14vw;
+                width: 84.88%;
+                height : 20vw;
+                margin : auto auto auto auto;
             }
             .product__item__content {
                 border : 1px solid;
